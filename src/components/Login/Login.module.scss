@@ -1,0 +1,15 @@
+.wrapper {
+    height: 800px;
+}
+
+.title {
+    text-align: center;
+}
+
+.login-btn {
+    width: 100%;
+}
+
+.login-btn + .login-btn {
+    margin-top: 10px;
+}
