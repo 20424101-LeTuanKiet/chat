@@ -4,25 +4,15 @@ import classNames from 'classnames/bind';
 import firebase, { auth } from '~/firebase/config';
 import styles from './Login.module.scss';
 import Title from 'antd/es/typography/Title';
-import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 
 function Login() {
-    const navigate = useNavigate();
-
     const handleFbLogin = () => {
         auth.signInWithPopup(fbProvider);
     };
-
-    auth.onAuthStateChanged((user) => {
-        console.log({ user });
-        if (user) {
-            navigate('/');
-        }
-    });
 
     return (
         <>
