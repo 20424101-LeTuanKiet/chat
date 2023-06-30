@@ -1,0 +1,53 @@
+.wrapper {
+    background-color: #252525;
+    color: #fff;
+    height: 100vh;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    padding: 0 16px;
+    align-items: center;
+    border-bottom: 1px solid #5e5e5e;
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: bold;
+    }
+
+    &__description {
+        font-size: 12px;
+    }
+
+    &__group {
+        display: flex;
+        align-items: center;
+
+        &__button {
+            color: #fff;
+
+            &:hover {
+                color: #48abe0 !important;
+            }
+        }
+    }
+}
+.content {
+    height: calc(100% - 56px);
+    display: flex;
+    flex-direction: column;
+    padding: 11px;
+    justify-content: flex-end;
+}
+
+.message {
+    max-height: 100%;
+    overflow-y: auto;
+}
