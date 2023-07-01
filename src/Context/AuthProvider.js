@@ -14,14 +14,15 @@ function AuthProvider({ children }) {
     useEffect(() => {
         const unsubscribed = auth.onAuthStateChanged((user) => {
             if (user) {
-                console.log(user);
+                // console.log(user);
                 const { displayName, email, uid, photoURL } = user;
                 setUser({ displayName, email, uid, photoURL });
                 setIsLoading(false);
                 navigate('/');
-            } else {
-                navigate('/login');
+                return;
             }
+            navigate('/login');
+            setIsLoading(false);
         });
 
         //Clean func

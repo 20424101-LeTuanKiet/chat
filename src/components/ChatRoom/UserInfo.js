@@ -1,18 +1,28 @@
 import { Avatar, Button, Typography } from 'antd';
 
+import { auth, db } from '~/firebase/config';
 import classNames from 'classnames/bind';
 import styles from './UserInfo.module.scss';
+import { useContext, useEffect } from 'react';
+
+import { AuthContext } from '~/Context/AuthProvider';
 
 const cx = classNames.bind(styles);
 
 function UserInfo() {
+    const {
+        user: { displayName, photoURL },
+    } = useContext(AuthContext);
+
     return (
         <div className={cx('wrapper')}>
             <div>
-                <Avatar src={''} />
-                <Typography.Text className={cx('username')}>LTK</Typography.Text>
+                <Avatar src={photoURL}>{photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}</Avatar>
+                <Typography.Text className={cx('username')}>{displayName}</Typography.Text>
             </div>
-            <Button ghost>Đăng xuất</Button>
+            <Button onClick={() => auth.signOut()} ghost>
+                Đăng xuất
+            </Button>
         </div>
     );
 }

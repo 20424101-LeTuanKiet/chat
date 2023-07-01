@@ -4,6 +4,9 @@ import classNames from 'classnames/bind';
 
 import styles from './RoomList.module.scss';
 import { PlusCircleOutlined } from '@ant-design/icons';
+import useFirestore from '~/hooks/useFirestore';
+import { useContext, useMemo } from 'react';
+import { AuthContext } from '~/Context/AuthProvider';
 
 const { Panel } = Collapse;
 
@@ -32,12 +35,32 @@ const LinkStyled = styled(Typography.Link)`
 `;
 
 function RoomList() {
+    const {
+        user: { uid },
+    } = useContext(AuthContext);
+
+    /**
+     * {
+     *  name: 'room name',
+     *  description: 'mo ta',
+     * members: [uid1, uid2,...]
+     * }
+     */
+
+    const roomsCondition = useMemo(() => {
+        return { fieldName: 'members', operator: 'array-contains', compareValue: uid };
+    }, [uid]);
+
+    const rooms = useFirestore('rooms', roomsCondition);
+
+    // console.log({ rooms });
+
     return (
         <Collapse ghost defaultActiveKey={['1']}>
             <PanelStyled header="Danh sách phòng chat" key="1">
-                <LinkStyled>Room 1</LinkStyled>
-                <LinkStyled>Room 2</LinkStyled>
-                <LinkStyled>Room 2</LinkStyled>
+                {rooms.map((room) => (
+                    <LinkStyled key={room.id}>{room.name}</LinkStyled>
+                ))}
                 <Button type="text" icon={<PlusCircleOutlined />} className={cx('create-room')}>
                     Tạo phòng
                 </Button>
