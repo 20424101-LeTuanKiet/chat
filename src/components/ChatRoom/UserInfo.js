@@ -1,9 +1,9 @@
 import { Avatar, Button, Typography } from 'antd';
 
-import { auth, db } from '~/firebase/config';
+import { auth } from '~/firebase/config';
 import classNames from 'classnames/bind';
 import styles from './UserInfo.module.scss';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import { AuthContext } from '~/Context/AuthProvider';
 
