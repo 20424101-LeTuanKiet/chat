@@ -1,8 +1,7 @@
-import { Avatar, Form, Input, Modal, Select, Spin } from 'antd';
+import { Avatar, Form, Modal, Select, Spin } from 'antd';
 import { debounce } from 'lodash';
 import { useContext, useMemo, useState } from 'react';
 import { AppContext } from '~/Context/AppProvider';
-import { AuthContext } from '~/Context/AuthProvider';
 import { db } from '~/firebase/config';
 
 function DebounceSelect({ fetchOptions, debounceTimeout = 400, ...props }) {
@@ -20,6 +19,7 @@ function DebounceSelect({ fetchOptions, debounceTimeout = 400, ...props }) {
             });
         };
         return debounce(loadOptions, debounceTimeout);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fetchOptions, debounceTimeout]);
 
     return (
@@ -62,10 +62,6 @@ async function fetchUserList(search, curMembers) {
 
 export default function InviteMemberModel() {
     const { isInviteMemberVisible, setIsInviteMemberVisible, selectedRoomId, selectedRoom } = useContext(AppContext);
-
-    const {
-        user: { uid },
-    } = useContext(AuthContext);
 
     const [value, setValue] = useState([]);
 

@@ -21,10 +21,11 @@ firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-auth.useEmulator('http://localhost:9099');
-if (window.location.hostname === 'localhost') {
-    db.useEmulator('localhost', '8081');
-}
+// sử dụng emulator để test trên firebase localhost
+// auth.useEmulator('http://localhost:9099');
+// if (window.location.hostname === 'localhost') {
+//     db.useEmulator('localhost', '8081');
+// }
 
 export { db, auth };
 export default firebase;

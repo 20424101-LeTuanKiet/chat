@@ -10,7 +10,7 @@ function Message({ text, displayName, createAt, photoURL }) {
         <div className={cx('wrapper')}>
             <div>
                 <Avatar size="small" src={photoURL}>
-                    A
+                    {photoURL ? '' : displayName.charAt(0).toUpperCase()}
                 </Avatar>
                 <Typography.Text className={cx('author')}>{displayName}</Typography.Text>
                 <Typography.Text className={cx('date')}>{createAt}</Typography.Text>
