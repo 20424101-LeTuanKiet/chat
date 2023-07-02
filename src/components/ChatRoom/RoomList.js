@@ -4,9 +4,8 @@ import classNames from 'classnames/bind';
 
 import styles from './RoomList.module.scss';
 import { PlusCircleOutlined } from '@ant-design/icons';
-import useFirestore from '~/hooks/useFirestore';
-import { useContext, useMemo } from 'react';
-import { AuthContext } from '~/Context/AuthProvider';
+import { useContext } from 'react';
+import { AppContext } from '~/Context/AppProvider';
 
 const { Panel } = Collapse;
 
@@ -35,33 +34,46 @@ const LinkStyled = styled(Typography.Link)`
 `;
 
 function RoomList() {
-    const {
-        user: { uid },
-    } = useContext(AuthContext);
+    // const {
+    //     user: { uid },
+    // } = useContext(AuthContext);
 
-    /**
-     * {
-     *  name: 'room name',
-     *  description: 'mo ta',
-     * members: [uid1, uid2,...]
-     * }
-     */
+    // /**
+    //  * {
+    //  *  name: 'room name',
+    //  *  description: 'mo ta',
+    //  * members: [uid1, uid2,...]
+    //  * }
+    //  */
 
-    const roomsCondition = useMemo(() => {
-        return { fieldName: 'members', operator: 'array-contains', compareValue: uid };
-    }, [uid]);
+    // const roomsCondition = useMemo(() => {
+    //     return { fieldName: 'members', operator: 'array-contains', compareValue: uid };
+    // }, [uid]);
 
-    const rooms = useFirestore('rooms', roomsCondition);
+    // const rooms = useFirestore('rooms', roomsCondition);
 
     // console.log({ rooms });
+
+    const { rooms, setIsAddRoomVisible, setSelectedRoomId } = useContext(AppContext);
+
+    const handleAddRoom = () => {
+        setIsAddRoomVisible(true);
+    };
 
     return (
         <Collapse ghost defaultActiveKey={['1']}>
             <PanelStyled header="Danh sách phòng chat" key="1">
                 {rooms.map((room) => (
-                    <LinkStyled key={room.id}>{room.name}</LinkStyled>
+                    <LinkStyled
+                        key={room.id}
+                        onClick={() => {
+                            setSelectedRoomId(room.id);
+                        }}
+                    >
+                        {room.name}
+                    </LinkStyled>
                 ))}
-                <Button type="text" icon={<PlusCircleOutlined />} className={cx('create-room')}>
+                <Button onClick={handleAddRoom} type="text" icon={<PlusCircleOutlined />} className={cx('create-room')}>
                     Tạo phòng
                 </Button>
             </PanelStyled>
