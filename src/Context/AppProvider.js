@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 function AppProvider({ children }) {
     const [isAddRoomVisible, setIsAddRoomVisible] = useState(false);
+    const [isInviteMemberVisible, setIsInviteMemberVisible] = useState(false);
     const [selectedRoomId, setSelectedRoomId] = useState('');
 
     const {
@@ -52,6 +53,8 @@ function AppProvider({ children }) {
                 members,
                 isAddRoomVisible,
                 setIsAddRoomVisible,
+                isInviteMemberVisible,
+                setIsInviteMemberVisible,
                 selectedRoomId,
                 setSelectedRoomId,
             }}

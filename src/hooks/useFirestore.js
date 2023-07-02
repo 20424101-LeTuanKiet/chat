@@ -3,7 +3,6 @@ import { db } from '~/firebase/config';
 
 const useFirestore = (collection, condition) => {
     const [documents, setDocuments] = useState([]);
-
     useEffect(() => {
         let collectionRef = db.collection(collection).orderBy('createAt');
 
@@ -35,7 +34,6 @@ const useFirestore = (collection, condition) => {
 
         return unsubscribe;
     }, [collection, condition]);
-
     return documents;
 };
 

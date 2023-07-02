@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import firebase, { auth } from '~/firebase/config';
 import styles from './Login.module.scss';
 import Title from 'antd/es/typography/Title';
-import { addDocument } from '~/firebase/services';
+import { addDocument, generateKeywords } from '~/firebase/services';
 
 const cx = classNames.bind(styles);
 
@@ -14,8 +14,8 @@ function Login() {
     const handleFbLogin = async () => {
         const data = await auth.signInWithPopup(fbProvider);
         const { additionalUserInfo, user } = data;
-        console.log(additionalUserInfo);
-        console.log(user);
+        // console.log(additionalUserInfo);
+        // console.log(user);
 
         if (additionalUserInfo?.isNewUser) {
             addDocument('users', {
@@ -24,6 +24,7 @@ function Login() {
                 photoURL: user.photoURL,
                 uid: user.uid,
                 providerId: additionalUserInfo.providerId,
+                keywords: generateKeywords(user.displayName),
             });
         }
     };
