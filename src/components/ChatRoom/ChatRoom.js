@@ -6,10 +6,10 @@ import SideBar from './Sidebar';
 function ChatRoom() {
     return (
         <Row>
-            <Col span={6}>
+            <Col xs={10} xl={6}>
                 <SideBar />
             </Col>
-            <Col span={18}>
+            <Col xs={14} xl={18}>
                 <ChatWindow />
             </Col>
         </Row>

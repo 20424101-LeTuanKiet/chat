@@ -18,5 +18,10 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizespeed;
-    max-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.ant-typography {
+    color: #fff !important;
 }

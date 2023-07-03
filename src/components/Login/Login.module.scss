@@ -1,13 +1,16 @@
 .wrapper {
-    height: 800px;
+    height: 100vh;
+    background-color: #1f1f1f;
 }
 
 .title {
     text-align: center;
+    color: #fff !important;
 }
 
 .login-btn {
     width: 100%;
+    margin-top: 10px;
 }
 
 .login-btn + .login-btn {

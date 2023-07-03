@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '~/firebase/config';
 import { Spin } from 'antd';
 
@@ -11,8 +11,17 @@ function AuthProvider({ children }) {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
 
+    const location = useLocation();
+
     useEffect(() => {
+        console.log(location.pathname);
+
         const unsubscribed = auth.onAuthStateChanged((user) => {
+            if (location.pathname === '/PolicyAndPrivacy') {
+                setIsLoading(false);
+                return;
+            }
+
             if (user) {
                 // console.log(user);
                 const { displayName, email, uid, photoURL } = user;
@@ -21,6 +30,7 @@ function AuthProvider({ children }) {
                 navigate('/');
                 return;
             }
+
             navigate('/login');
             setIsLoading(false);
         });
@@ -29,9 +39,18 @@ function AuthProvider({ children }) {
         return () => {
             unsubscribed();
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [navigate]);
 
-    return <AuthContext.Provider value={{ user }}>{isLoading ? <Spin /> : children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider value={{ user }}>
+            {isLoading ? (
+                <Spin style={{ justifyContent: 'center', alignItems: 'center', width: '100vh', height: '100vh' }} />
+            ) : (
+                children
+            )}
+        </AuthContext.Provider>
+    );
 }
 
 export default AuthProvider;

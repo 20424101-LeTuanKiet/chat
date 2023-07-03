@@ -5,6 +5,7 @@ import firebase, { auth } from '~/firebase/config';
 import styles from './Login.module.scss';
 import Title from 'antd/es/typography/Title';
 import { addDocument, generateKeywords } from '~/firebase/services';
+import { FacebookOutlined } from '@ant-design/icons';
 
 const cx = classNames.bind(styles);
 
@@ -31,14 +32,14 @@ function Login() {
 
     return (
         <>
-            <Row justify="center" className={cx('wrapper')}>
-                <Col span={8}>
+            <Row justify="center" align="middle" className={cx('wrapper')}>
+                <Col xs={22} xl={8}>
                     <Title className={cx('title')} level={3}>
-                        Chat Room
+                        CHAT GROUP APP
                     </Title>
                     {/* <Button className={cx('login-btn')}>Đăng nhập bằng Google</Button> */}
                     <Button className={cx('login-btn')} onClick={handleFbLogin}>
-                        Đăng nhập bằng Facebook
+                        Đăng nhập bằng Facebook <FacebookOutlined />
                     </Button>
                 </Col>
             </Row>

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './ChatWindow.module.scss';
-import { Alert, Avatar, Button, Form, Input, Tooltip } from 'antd';
+import { Avatar, Button, Form, Input, Tooltip } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 import Message from './Message';
 import { styled } from 'styled-components';
@@ -134,7 +134,7 @@ function ChatWindow() {
                     </div>
                 </>
             ) : (
-                <Alert message="Chào mừng bạn đến với Chat Group App" type="info" style={{ margin: 5 }} />
+                <div className={cx('wellcome')}>Chào mừng bạn đến với Chat Group App</div>
             )}
         </div>
     );

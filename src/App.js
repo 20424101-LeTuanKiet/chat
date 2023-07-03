@@ -5,7 +5,8 @@ import ChatRoom from '~/components/ChatRoom';
 import AuthProvider from '~/Context/AuthProvider';
 import AppProvider from '~/Context/AppProvider';
 import AddRoomModal from '~/components/Modals/AddRoomModal';
-import InviteMemberModel from './components/Modals/InviteMemberModal';
+import InviteMemberModel from '~/components/Modals/InviteMemberModal';
+import PolicyAndPrivacy from '~/components/PolicyAndPrivacy';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Routes>
                         <Route element={<Login />} path="/login" />
                         <Route element={<ChatRoom />} path="/" />
+                        <Route element={<PolicyAndPrivacy />} path="/PolicyAndPrivacy" />
                     </Routes>
                     <AddRoomModal />
                     <InviteMemberModel />
