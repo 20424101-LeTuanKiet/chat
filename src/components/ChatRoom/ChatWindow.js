@@ -51,7 +51,7 @@ function ChatWindow() {
             roomId: selectedRoom.id,
         });
 
-        form.resetFields(['message']);
+        form.resetFields();
     };
 
     const condition = useMemo(
@@ -116,8 +116,8 @@ function ChatWindow() {
                                 />
                             ))}
                         </div>
-                        <FormStyled>
-                            <Form.Item form={form}>
+                        <FormStyled form={form}>
+                            <Form.Item>
                                 <Input
                                     name="message"
                                     onChange={handleInputChange}

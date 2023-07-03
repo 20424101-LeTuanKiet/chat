@@ -1,3 +1,9 @@
+## Video Demo: https://youtu.be/gjeOJS9-zJk
+
+## Live Demo: https://chat-group.click
+
+Do Facebook thay đổi chính sách đối với việc đăng nhập bằng facebook, cần xác nhận tài khoản doanh nghiệp app mới đăng nhập được bằng facebook nên hiện tại live demo không thể đăng nhập. Xin mời xem demo qua video youtube ở trên.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
