@@ -16,7 +16,7 @@ function App() {
                     <Routes>
                         <Route element={<Login />} path="/login" />
                         <Route element={<ChatRoom />} path="/" />
-                        <Route element={<PolicyAndPrivacy />} path="/PolicyAndPrivacy" />
+                        <Route element={<PolicyAndPrivacy />} path="/policy-and-privacy" />
                     </Routes>
                     <AddRoomModal />
                     <InviteMemberModel />
