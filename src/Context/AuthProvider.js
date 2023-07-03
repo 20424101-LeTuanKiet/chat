@@ -17,7 +17,7 @@ function AuthProvider({ children }) {
         console.log(location.pathname);
 
         const unsubscribed = auth.onAuthStateChanged((user) => {
-            if (location.pathname === '/PolicyAndPrivacy') {
+            if (location.pathname === '/policy-and-privacy') {
                 setIsLoading(false);
                 return;
             }
